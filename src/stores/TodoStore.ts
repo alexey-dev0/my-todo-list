@@ -23,7 +23,7 @@ export class TodoStore {
 
   addTodo = (text: string) => {
     this.items.push({
-      id: this.items[this.items.length - 1]?.id ?? 1,
+      id: this.items.length === 0 ? 1 : this.items[this.items.length - 1].id + 1,
       text,
       isDone: false
     });

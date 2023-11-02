@@ -11,7 +11,7 @@ const TodoList: React.FC = observer(() => {
 
   return (
     <Box width="100%">
-      <VStack align="stretch" spacing={2}>
+      <VStack align="stretch" flexDir="column-reverse" spacing={2}>
         {items.map(item => (
           <TodoItem key={item.id} {...item} onDelete={todoStore.removeTodo} onToggle={todoStore.toggleTodo} />
         ))}
