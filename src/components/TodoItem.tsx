@@ -13,33 +13,33 @@ export type TodoItemProps = {
 const TodoItem: React.FC<TodoItemProps> = ({ text, isDone, onDelete, onToggle, onEdit }) => {
   return (
     <Box
+      alignItems="center"
+      borderRadius="md"
+      borderWidth="1px"
       display="flex"
       justifyContent="space-between"
-      alignItems="center"
-      borderWidth="1px"
-      borderRadius="md"
       p={2}
       width="100%"
     >
-      <Checkbox isChecked={isDone} onChange={onToggle} mr={2} />
+      <Checkbox isChecked={isDone} mr={2} onChange={onToggle} />
       {onEdit ? (
         <Input defaultValue={text} size="sm" variant="unstyled" />
       ) : (
         <Text textDecoration={isDone ? "line-through" : "none"}>{text}</Text>
       )}
       <IconButton
-        icon={<EditIcon />}
+        aria-label={"Edit"}
         colorScheme="blue"
-        onClick={onEdit}
+        icon={<EditIcon />}
         ml="auto"
         mr={2}
-        aria-label={"Edit"}
+        onClick={onEdit}
       />
       <IconButton
-        icon={<DeleteIcon />}
-        colorScheme="red"
-        onClick={onDelete}
         aria-label={"Delete"}
+        colorScheme="red"
+        icon={<DeleteIcon />}
+        onClick={onDelete}
       />
     </Box>
   );

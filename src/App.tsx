@@ -12,8 +12,8 @@ const items: TodoItemProps[] = [
 const App = () => {
   return (
     <ChakraProvider>
-      <Box bg="gray.100" minHeight="100vh" display="flex" alignItems="center" justifyContent="center">
-        <Container maxW="xl" p={8} bg="white" boxShadow="md" borderRadius="md">
+      <Box alignItems="center" bg="gray.100" display="flex" justifyContent="center" minHeight="100vh">
+        <Container bg="white" borderRadius="md" boxShadow="md" maxW="xl" p={8}>
           <VStack spacing={4}>
             <Heading as="h1" size="xl">
               To-Do List
