@@ -1,20 +1,13 @@
-import { Box, Checkbox, IconButton, Input, Text } from "@chakra-ui/react";
+import { Box, Checkbox, IconButton, Text } from "@chakra-ui/react";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
-
-
-export type TodoItemProps = {
-  id: number;
-  isDone: boolean;
-  text: string;
-};
+import { TodoProps } from "../stores/TodoStore";
 
 export type TodoItemActions = {
   onDelete: (id: number) => void;
   onToggle: (id: number) => void;
-  onEdit?: (id: number) => void;
 };
 
-const TodoItem: React.FC<TodoItemProps & TodoItemActions> = ({ id, text, isDone, onDelete, onToggle, onEdit }) => {
+const TodoItem: React.FC<TodoProps & TodoItemActions> = ({ id, text, isDone, onDelete, onToggle }) => {
   return (
     <Box
       alignItems="center"
@@ -37,7 +30,6 @@ const TodoItem: React.FC<TodoItemProps & TodoItemActions> = ({ id, text, isDone,
         icon={<EditIcon />}
         ml="auto"
         mr={2}
-        onClick={() => onEdit && onEdit(id)}
       />
       <IconButton
         aria-label={"Delete"}

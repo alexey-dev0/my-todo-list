@@ -1,21 +1,23 @@
-import TodoItem, { TodoItemActions, TodoItemProps } from './TodoItem';
+import { observer } from 'mobx-react';
+import TodoItem from './TodoItem';
 import { Box, VStack } from '@chakra-ui/react';
+import { TodoProps } from '../stores/TodoStore';
+import { useTodoStore } from '../hooks/useTodoStore';
 
 
-type TodoListProps = {
-  items: TodoItemProps[];
-  actions: TodoItemActions;
-};
+const TodoList: React.FC = observer(() => {
+  const todoStore = useTodoStore();
+  const items: TodoProps[] = todoStore.items;
 
-
-const TodoList: React.FC<TodoListProps> = ({ items, actions }) => {
   return (
     <Box width="100%">
       <VStack align="stretch" spacing={2}>
-        {items.map(item => <TodoItem key={item.id} {...item} {...actions} />)}
+        {items.map(item => (
+          <TodoItem key={item.id} {...item} onDelete={todoStore.removeTodo} onToggle={todoStore.toggleTodo} />
+        ))}
       </VStack>
     </Box>
   );
-};
+});
 
 export default TodoList;
